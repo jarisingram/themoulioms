@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -30,7 +29,9 @@ export default function Hero() {
           transition={{ duration: 1.4, delay: 0.3 }}
           className="font-script text-white text-7xl md:text-9xl lg:text-[10rem] leading-none mb-2"
         >
-          <span>Abdel</span><span className="text-accent mx-6">&</span><span>Jaris</span>
+          <span>Abdel</span>
+          <span className="text-accent ml-6 mr-10 md:ml-10 md:mr-16 lg:ml-14 lg:mr-24">&</span>
+          <span>Jaris</span>
         </motion.h1>
 
         <motion.div
@@ -58,14 +59,7 @@ export default function Hero() {
           Philippines
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <ChevronDown className="w-6 h-6 text-white/70 animate-bounce" />
-        </motion.div>
+
       </div>
     </section>
   );

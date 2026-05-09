@@ -13,6 +13,7 @@ import RSVPForm from '../components/wedding/RSVPForm';
 import ContactFAQ from '../components/wedding/ContactFAQ';
 import Footer from '../components/wedding/Footer';
 import MusicPlayer from '../components/wedding/MusicPlayer';
+import ScrollIndicator from '../components/wedding/ScrollIndicator';
 
 export default function Wedding() {
   return (
@@ -31,6 +32,7 @@ export default function Wedding() {
       <ContactFAQ />
       <Footer />
       <MusicPlayer />
+      <ScrollIndicator />
     </div>
   );
 }

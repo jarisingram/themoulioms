@@ -6,19 +6,19 @@ const methods = [
   {
     name: 'CashApp',
     handle: '$themoulioms',
-    icon: '💚',
+    iconUrl: 'https://img.icons8.com/?size=100&id=mlOg8xC4khEI&format=png&color=000000',
     color: 'bg-green-50 border-green-200',
   },
   {
     name: 'Venmo',
     handle: '@themoulioms',
-    icon: '💙',
+    iconUrl: 'https://img.icons8.com/?size=100&id=96905&format=png&color=000000',
     color: 'bg-blue-50 border-blue-200',
   },
   {
     name: 'Zelle',
     handle: 'themoulioms@email.com',
-    icon: '💜',
+    iconUrl: 'https://img.icons8.com/?size=100&id=QL2w4xOmTqeY&format=png&color=000000',
     color: 'bg-purple-50 border-purple-200',
   },
 ];
@@ -57,7 +57,14 @@ export default function Gifts() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className={`border rounded-sm p-8 text-center ${m.color}`}
             >
-              <div className="text-3xl mb-3">{m.icon}</div>
+              <div className="flex justify-center mb-4">
+                <img
+                  src={m.iconUrl}
+                  alt={`${m.name} logo`}
+                  className="w-10 h-10 object-contain"
+                  loading="lazy"
+                />
+              </div>
               <h3 className="font-serif text-xl text-primary mb-2">{m.name}</h3>
               <p className="text-sm text-foreground/60 font-mono">{m.handle}</p>
             </motion.div>

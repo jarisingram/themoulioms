@@ -32,7 +32,7 @@ export default function Nav() {
             scrolled ? 'text-primary' : 'text-white'
           }`}
         >
-          A <span className="mx-0.5">&</span> J
+          <span>A</span><span className="ml-1 mr-4">&</span><span>J</span>
         </span>
         <div className="hidden md:flex items-center gap-10">
           {links.map((link) => (
