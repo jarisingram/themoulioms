@@ -30,7 +30,7 @@ export default function Hero() {
           className="font-script text-white text-7xl md:text-9xl lg:text-[10rem] leading-none mb-2"
         >
           <span>Abdel</span>
-          <span className="text-accent ml-6 mr-10 md:ml-10 md:mr-16 lg:ml-14 lg:mr-24">&</span>
+          <span className="text-[#8AA0B8] ml-6 mr-10 md:ml-10 md:mr-16 lg:ml-14 lg:mr-24">&</span>
           <span>Jaris</span>
         </motion.h1>
 
@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 1 }}
           className="flex items-center gap-6 text-white font-serif"
         >
-          <span className="text-lg md:text-xl tracking-[0.25em]">13 · 03 · 2027</span>
+          <span className="text-lg md:text-xl tracking-[0.25em]">03.13.2027</span>
         </motion.div>
 
         <motion.p

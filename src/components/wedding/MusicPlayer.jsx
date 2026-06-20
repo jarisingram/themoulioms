@@ -2,8 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Music } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Self-hosted MP3 — drop your file at: public/audio/palagi.mp3
-// (The /public folder is served at the site root, so the URL is /audio/palagi.mp3)
+// Self-hosted MP3 sits at: public/audio/palagi.mp3
 const AUDIO_SRC = '/audio/palagi.mp3';
 const SONG_TITLE = 'Palagi';
 const SONG_ARTIST = 'TJ Monterde ft. KZ Tandingan';
@@ -14,7 +13,7 @@ export default function MusicPlayer() {
   const [error, setError] = useState(null);
   const audioRef = useRef(null);
 
-  // Keep the play/pause icon in sync if audio ends or is paused some other way.
+  // Keep play/pause icon in sync with the actual audio element.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -37,6 +36,47 @@ export default function MusicPlayer() {
     };
   }, []);
 
+  // Try to autoplay on mount. Browsers usually block autoplay with sound until
+  // the user interacts with the page, so if that fails we register a one-shot
+  // listener that starts playback on the first click, tap, scroll, or keypress.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    let cancelled = false;
+
+    const startPlayback = async () => {
+      if (cancelled) return;
+      try {
+        await audio.play();
+      } catch (e) {
+        // Still blocked — the listener stays attached until we succeed.
+      }
+    };
+
+    const onFirstInteraction = () => {
+      startPlayback();
+    };
+
+    startPlayback().then(() => {
+      if (cancelled) return;
+      // If we are already playing, we're done. Otherwise wait for a gesture.
+      if (audio.paused) {
+        document.addEventListener('click', onFirstInteraction, { once: true });
+        document.addEventListener('touchstart', onFirstInteraction, { once: true });
+        document.addEventListener('keydown', onFirstInteraction, { once: true });
+        document.addEventListener('scroll', onFirstInteraction, { once: true, passive: true });
+      }
+    });
+
+    return () => {
+      cancelled = true;
+      document.removeEventListener('click', onFirstInteraction);
+      document.removeEventListener('touchstart', onFirstInteraction);
+      document.removeEventListener('keydown', onFirstInteraction);
+      document.removeEventListener('scroll', onFirstInteraction);
+    };
+  }, []);
+
   const toggle = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -47,7 +87,6 @@ export default function MusicPlayer() {
       try {
         await audio.play();
       } catch (err) {
-        // Most likely an autoplay restriction or missing file
         console.error('Audio play failed:', err);
         setError(err?.message || 'Could not start audio.');
       }
@@ -63,13 +102,7 @@ export default function MusicPlayer() {
 
   return (
     <>
-      {/* Hidden audio element — loops and is controlled by our buttons */}
-      <audio
-        ref={audioRef}
-        src={AUDIO_SRC}
-        loop
-        preload="auto"
-      />
+      <audio ref={audioRef} src={AUDIO_SRC} loop preload="auto" />
 
       <AnimatePresence>
         {visible && (

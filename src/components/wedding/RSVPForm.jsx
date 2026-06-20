@@ -6,20 +6,36 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Heart, Check } from 'lucide-react';
 
-// Formspree endpoint - overridable via VITE_FORMSPREE_ENDPOINT env var.
 const FORMSPREE_ENDPOINT =
   import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/meenqegr';
 
-const fieldClass = "mt-2 border-0 border-b border-border rounded-none bg-transparent px-0 font-serif text-lg focus-visible:ring-0 focus-visible:border-primary";
+const fieldClass =
+  'mt-2 border-0 border-b border-border rounded-none bg-transparent px-0 font-serif text-lg focus-visible:ring-0 focus-visible:border-primary';
+
+const SectionHeader = ({ children, subtitle }) => (
+  <div className="mb-6">
+    <p className="text-xs tracking-[0.3em] uppercase text-primary font-semibold">
+      {children}
+    </p>
+    {subtitle && (
+      <p className="text-xs text-muted-foreground mt-1 italic font-serif">
+        {subtitle}
+      </p>
+    )}
+    <div className="w-10 h-px bg-accent mt-3" />
+  </div>
+);
 
 export default function RSVPForm() {
   const [form, setForm] = useState({
     guest_name: '',
     email: '',
-    mailing_address: '',
+    phone: '',
     attending: '',
-    guest_count: 1,
+    bringing_plus_one: '',
+    plus_one_name: '',
     dietary_restrictions: '',
+    plus_one_dietary: '',
     message: '',
   });
   const [submitting, setSubmitting] = useState(false);
@@ -36,7 +52,6 @@ export default function RSVPForm() {
     try {
       const payload = {
         ...form,
-        guest_count: Number(form.guest_count) || 1,
         _subject: `Wedding RSVP - ${form.guest_name} (${form.attending === 'yes' ? 'Accepting' : 'Declining'})`,
       };
       const res = await fetch(FORMSPREE_ENDPOINT, {
@@ -54,7 +69,9 @@ export default function RSVPForm() {
       setDone(true);
     } catch (err) {
       console.error('RSVP submission error:', err);
-      setError('Sorry - something went wrong sending your RSVP. Please try again, or email us directly.');
+      setError(
+        'Sorry, something went wrong sending your RSVP. Please try again, or email us directly.'
+      );
     } finally {
       setSubmitting(false);
     }
@@ -93,9 +110,8 @@ export default function RSVPForm() {
             </p>
           </motion.div>
         ) : (
-          <form onSubmit={submit} className="space-y-8">
-
-            {/* Step 1: Attendance choice first */}
+          <form onSubmit={submit} className="space-y-10">
+            {/* Step 1 — Attendance */}
             <div>
               <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3 block">
                 Will you attend?
@@ -121,7 +137,7 @@ export default function RSVPForm() {
               </div>
             </div>
 
-            {/* If declining: only ask name */}
+            {/* Declining: just name + message */}
             {form.attending === 'no' && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
@@ -154,77 +170,137 @@ export default function RSVPForm() {
               </motion.div>
             )}
 
-            {/* If accepting: full form */}
+            {/* Accepting: full form, split into clear sections */}
             {form.attending === 'yes' && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
-                className="space-y-8 overflow-hidden"
+                className="space-y-12 overflow-hidden"
               >
-                <div>
-                  <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    Name(s) of Guest(s)
-                  </Label>
-                  <Input
-                    required
-                    placeholder="e.g. John & Jane Smith"
-                    value={form.guest_name}
-                    onChange={(e) => update('guest_name', e.target.value)}
-                    className={fieldClass}
-                  />
+                {/* === SECTION: ABOUT YOU === */}
+                <div className="bg-secondary/30 border border-border p-8 rounded-sm">
+                  <SectionHeader subtitle="The person we invited">
+                    About You
+                  </SectionHeader>
+
+                  <div className="space-y-7">
+                    <div>
+                      <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                        Your Full Name
+                      </Label>
+                      <Input
+                        required
+                        placeholder="e.g. Jane Smith"
+                        value={form.guest_name}
+                        onChange={(e) => update('guest_name', e.target.value)}
+                        className={fieldClass}
+                      />
+                    </div>
+
+                    <div>
+                      <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                        Email
+                      </Label>
+                      <Input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) => update('email', e.target.value)}
+                        className={fieldClass}
+                      />
+                    </div>
+
+                    <div>
+                      <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                        Phone Number
+                      </Label>
+                      <Input
+                        type="tel"
+                        required
+                        placeholder="e.g. (555) 123 4567"
+                        value={form.phone}
+                        onChange={(e) => update('phone', e.target.value)}
+                        className={fieldClass}
+                      />
+                    </div>
+
+                    <div>
+                      <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                        Any Dietary Restrictions?
+                      </Label>
+                      <Input
+                        value={form.dietary_restrictions}
+                        onChange={(e) =>
+                          update('dietary_restrictions', e.target.value)
+                        }
+                        className={fieldClass}
+                      />
+                    </div>
+                  </div>
                 </div>
 
+                {/* === SECTION: PLUS ONE === */}
                 <div>
-                  <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    Email
-                  </Label>
-                  <Input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => update('email', e.target.value)}
-                    className={fieldClass}
-                  />
+                  <SectionHeader subtitle="You may bring one guest with you">
+                    Are You Bringing a Plus One?
+                  </SectionHeader>
+
+                  <div className="grid grid-cols-2 gap-4 mt-3">
+                    {[
+                      { v: 'yes', l: 'Yes, with a guest' },
+                      { v: 'no', l: 'No, just me' },
+                    ].map((opt) => (
+                      <button
+                        key={opt.v}
+                        type="button"
+                        onClick={() => update('bringing_plus_one', opt.v)}
+                        className={`py-4 border font-serif italic text-base transition-all ${
+                          form.bringing_plus_one === opt.v
+                            ? 'border-primary bg-primary text-primary-foreground'
+                            : 'border-border text-foreground/70 hover:border-primary'
+                        }`}
+                      >
+                        {opt.l}
+                      </button>
+                    ))}
+                  </div>
+
+                  {form.bringing_plus_one === 'yes' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="space-y-7 mt-8 bg-secondary/30 border border-border p-8 rounded-sm overflow-hidden"
+                    >
+                      <div>
+                        <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                          Your Guest's Full Name
+                        </Label>
+                        <Input
+                          required
+                          placeholder="e.g. Alex Johnson"
+                          value={form.plus_one_name}
+                          onChange={(e) => update('plus_one_name', e.target.value)}
+                          className={fieldClass}
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                          Your Guest's Dietary Restrictions
+                        </Label>
+                        <Input
+                          value={form.plus_one_dietary}
+                          onChange={(e) =>
+                            update('plus_one_dietary', e.target.value)
+                          }
+                          className={fieldClass}
+                        />
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
 
-                <div>
-                  <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    Mailing Address
-                  </Label>
-                  <p className="text-xs text-muted-foreground mt-1 mb-1 italic font-serif">For sending your physical invitation</p>
-                  <Textarea
-                    rows={2}
-                    placeholder="Street, City, State, ZIP, Country"
-                    value={form.mailing_address}
-                    onChange={(e) => update('mailing_address', e.target.value)}
-                    className="mt-1 border-0 border-b border-border rounded-none bg-transparent px-0 font-serif text-lg focus-visible:ring-0 focus-visible:border-primary resize-none"
-                  />
-                </div>
-
-                <div>
-                  <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    Number of Guests
-                  </Label>
-                  <Input
-                    type="number"
-                    min="1"
-                    max="6"
-                    value={form.guest_count}
-                    onChange={(e) => update('guest_count', e.target.value)}
-                    className={fieldClass}
-                  />
-                </div>
-
-                <div>
-                  <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                    Dietary Restrictions
-                  </Label>
-                  <Input
-                    value={form.dietary_restrictions}
-                    onChange={(e) => update('dietary_restrictions', e.target.value)}
-                    className={fieldClass}
-                  />
-                </div>
-
+                {/* === SECTION: NOTE === */}
                 <div>
                   <Label className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
                     A Note for the Couple (optional)

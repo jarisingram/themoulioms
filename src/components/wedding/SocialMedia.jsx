@@ -21,8 +21,10 @@ export default function SocialMedia() {
           </h2>
           <div className="w-16 h-px bg-accent mx-auto mb-10" />
           <p className="font-serif text-lg text-primary-foreground/80 leading-relaxed mb-10">
-            We'd love to see the day through your eyes! Share your photos and videos on
-            social media and tag us with our wedding hashtag.
+            We would love to see our special day through your eyes. Please use the QR code
+            to upload any photos and videos you take throughout the celebration so we can
+            relive every moment together. Don't forget to tag your posts with our hashtag
+            so we can easily find and share all the memories from our wedding day.
           </p>
 
           <div className="inline-flex items-center gap-3 border border-accent px-8 py-5 rounded-sm">

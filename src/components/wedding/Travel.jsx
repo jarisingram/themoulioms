@@ -6,17 +6,17 @@ const tips = [
   {
     icon: Plane,
     title: 'Getting There',
-    text: 'Fly into Ninoy Aquino International (MNL), then connect to Puerto Princesa or El Nido (ENI) via local flights.',
+    text: 'Fly into Ninoy Aquino International (MNL) airport, and we will drive together to Bolinao, Pangasinan.',
   },
   {
     icon: Hotel,
     title: 'Where to Stay',
-    text: 'A curated list of resorts and boutique hotels near the venue will be shared with your invitation.',
+    text: 'Guests will stay at the resort of the wedding. Specific details will be shared closer to the date.',
   },
   {
     icon: Sun,
     title: 'Weather & Attire',
-    text: 'March is warm and dry — expect sunshine and 28°C. Tropical formal attire recommended.',
+    text: 'March is warm and dry, with sunshine and around 28°C. Tropical formal attire is recommended.',
   },
 ];
 
@@ -25,8 +25,8 @@ export default function Travel() {
     <section className="relative py-32 px-6 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://media.base44.com/images/public/69e338bc82fcf176703f0378/9e99668bf_generated_image.png"
-          alt="El Nido Palawan limestone cliffs"
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSZ6xrTc94clQs4P4qt_nh7v3NQhezBqL0qmiQxJRcYv-I3UoKTJvwPMi2ldZQRanFVzqA85OS_Y6JQKHvgiy0ngXmz5egYPDCJoIBG575s3YYZ-nePJG9o3cLjISUymvrTqQRgdf7UI7fjZIwhmDNpXSaE-bKTgHlafrHw0AQnqwo9Je1C7O2u1eAsg4-/s16000-rw/Patar%20Beach%20Bolinao%20-%20Drone%20Shot.jpg"
+          alt="Patar Beach in Bolinao"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-primary/80" />

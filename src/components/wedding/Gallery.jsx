@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const images = [
-  'https://media.base44.com/images/public/69e338bc82fcf176703f0378/e457f2094_generated_image.png',
-  'https://media.base44.com/images/public/69e338bc82fcf176703f0378/87567005d_generated_image.png',
-  'https://media.base44.com/images/public/69e338bc82fcf176703f0378/2ddcda0bf_generated_image.png',
+  '/images/gallery-1.jpg',
+  '/images/gallery-2.jpg',
+  '/images/gallery-3.jpg',
 ];
 
 export default function Gallery() {
@@ -34,7 +34,7 @@ export default function Gallery() {
               <img
                 src={src}
                 alt={`Moment ${i + 1}`}
-                className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-700"
+                className="w-full aspect-[4/5] object-cover hover:scale-105 transition-transform duration-700"
               />
             </motion.div>
           ))}

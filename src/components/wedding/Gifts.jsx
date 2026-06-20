@@ -17,9 +17,15 @@ const methods = [
   },
   {
     name: 'Zelle',
-    handle: 'themoulioms@email.com',
+    handle: '4087479496',
     iconUrl: 'https://img.icons8.com/?size=100&id=QL2w4xOmTqeY&format=png&color=000000',
     color: 'bg-purple-50 border-purple-200',
+  },
+  {
+    name: 'Cash',
+    handle: 'Envelope at the wedding',
+    Icon: DollarSign,
+    color: 'bg-amber-50 border-amber-200',
   },
 ];
 
@@ -38,16 +44,17 @@ export default function Gifts() {
         <div className="flex items-center justify-center gap-3 mb-10">
           <Gift className="w-5 h-5 text-accent" />
           <p className="font-serif text-lg text-foreground/80 italic">
-            Your presence is the greatest gift of all.
+            Your presence and prayers are more than enough for us.
           </p>
         </div>
 
-        <p className="font-serif text-foreground/70 max-w-xl mx-auto mb-14 leading-relaxed">
-          For those who wish to contribute to our new chapter together, a monetary gift is
-          deeply appreciated. Below are our preferred ways to receive them.
+        <p className="font-serif text-foreground/70 max-w-2xl mx-auto mb-14 leading-relaxed">
+          We are truly blessed with all that we have, and your presence and prayers are more than
+          enough for us. However, if you wish to honor us with a gift, a monetary contribution
+          toward our future together would be sincerely appreciated.
         </p>
 
-        <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {methods.map((m, i) => (
             <motion.div
               key={m.name}
@@ -58,12 +65,16 @@ export default function Gifts() {
               className={`border rounded-sm p-8 text-center ${m.color}`}
             >
               <div className="flex justify-center mb-4">
-                <img
-                  src={m.iconUrl}
-                  alt={`${m.name} logo`}
-                  className="w-10 h-10 object-contain"
-                  loading="lazy"
-                />
+                {m.iconUrl ? (
+                  <img
+                    src={m.iconUrl}
+                    alt={`${m.name} logo`}
+                    className="w-10 h-10 object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <m.Icon className="w-10 h-10 text-amber-600" strokeWidth={1.5} />
+                )}
               </div>
               <h3 className="font-serif text-xl text-primary mb-2">{m.name}</h3>
               <p className="text-sm text-foreground/60 font-mono">{m.handle}</p>
@@ -72,7 +83,7 @@ export default function Gifts() {
         </div>
 
         <p className="mt-10 text-xs tracking-[0.2em] uppercase text-muted-foreground">
-          Please include your name in the note — thank you!
+          Please include your name in the note. Thank you!
         </p>
       </div>
     </section>

@@ -5,20 +5,20 @@ import { MapPin, Clock, Calendar } from 'lucide-react';
 const events = [
   {
     title: 'The Ceremony',
-    image: 'https://media.base44.com/images/public/69e338bc82fcf176703f0378/a21c45434_generated_image.png',
+    image: '/images/ceremony.png',
     date: 'Saturday, March 13, 2027',
-    time: '3:30 PM',
-    venue: 'Beachfront Chapel',
-    location: 'El Nido, Palawan',
+    time: 'Time TBA',
+    venue: 'Resort to be announced',
+    location: 'Bolinao, Pangasinan',
     note: 'A barefoot ceremony by the sea',
   },
   {
     title: 'The Reception',
-    image: 'https://media.base44.com/images/public/69e338bc82fcf176703f0378/416587530_generated_image.png',
+    image: '/images/reception.png',
     date: 'Saturday, March 13, 2027',
-    time: '6:00 PM',
-    venue: 'Garden Pavilion',
-    location: 'El Nido, Palawan',
+    time: 'Time TBA',
+    venue: 'Resort to be announced',
+    location: 'Bolinao, Pangasinan',
     note: 'Dinner, dancing & celebration',
   },
 ];

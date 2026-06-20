@@ -27,13 +27,11 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <span
-          className={`font-script text-3xl transition-colors ${
-            scrolled ? 'text-primary' : 'text-white'
-          }`}
-        >
-          <span>A</span><span className="ml-1 mr-4">&</span><span>J</span>
-        </span>
+        <img
+          src="/images/monogram.png"
+          alt="A & J monogram"
+          className="h-14 w-auto"
+        />
         <div className="hidden md:flex items-center gap-10">
           {links.map((link) => (
             <button
