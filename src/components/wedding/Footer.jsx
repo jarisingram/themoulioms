@@ -12,7 +12,7 @@ export default function Footer() {
         03.13.2027
       </p>
       <p className="font-serif italic text-white/80">
-        Bolinao, Pangasinan · Philippines
+        Bani Hidden Paradise Resort · Bani, Pangasinan · Philippines
       </p>
     </footer>
   );

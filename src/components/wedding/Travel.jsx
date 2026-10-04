@@ -6,12 +6,12 @@ const tips = [
   {
     icon: Plane,
     title: 'Getting There',
-    text: 'Fly into Ninoy Aquino International (MNL) airport, and we will drive together to Bolinao, Pangasinan.',
+    text: 'Fly into Manila (MNL) or Clark (CRK), and we will drive together to Bani, Pangasinan. If you are arriving close to the wedding date, we recommend CRK. If you plan to come early to tour and experience the Philippines, fly into MNL — Manila has lots of restaurants, shopping centers, and activities to enjoy.',
   },
   {
     icon: Hotel,
     title: 'Where to Stay',
-    text: 'Guests will stay at the resort of the wedding. Specific details will be shared closer to the date.',
+    text: 'Guests will stay at Bani Hidden Paradise Resort, where the wedding and reception will be held. Specific details will be shared closer to the date.',
   },
   {
     icon: Sun,

@@ -8,8 +8,8 @@ const events = [
     image: '/images/ceremony.png',
     date: 'Saturday, March 13, 2027',
     time: 'Time TBA',
-    venue: 'Resort to be announced',
-    location: 'Bolinao, Pangasinan',
+    venue: 'Bani Hidden Paradise Resort',
+    location: 'Bani, Pangasinan',
     note: 'A barefoot ceremony by the sea',
   },
   {
@@ -17,8 +17,8 @@ const events = [
     image: '/images/reception.png',
     date: 'Saturday, March 13, 2027',
     time: 'Time TBA',
-    venue: 'Resort to be announced',
-    location: 'Bolinao, Pangasinan',
+    venue: 'Bani Hidden Paradise Resort',
+    location: 'Bani, Pangasinan',
     note: 'Dinner, dancing & celebration',
   },
 ];

@@ -23,21 +23,21 @@ const faqs = [
   },
   {
     q: 'Where can I park?',
-    a: 'Parking details will be shared closer to the date once the resort is confirmed.',
+    a: 'Parking details for Bani Hidden Paradise Resort will be shared closer to the date.',
     q_tl: 'Saan ako maaaring magparada?',
-    a_tl: 'Ibabahagi ang mga detalye ng paradahan kapag malapit na ang petsa at nakumpirma na ang resort.',
+    a_tl: 'Ibabahagi ang mga detalye ng paradahan sa Bani Hidden Paradise Resort kapag malapit na ang petsa.',
   },
   {
     q: 'Is the resort room free?',
-    a: 'Room and accommodation details will be shared once the resort is confirmed. Please reach out to Jaris if you have specific questions about lodging.',
+    a: 'Room and accommodation details for Bani Hidden Paradise Resort will be shared closer to the date. Please reach out to Jaris if you have specific questions about lodging.',
     q_tl: 'Libre ba ang kuwarto sa resort?',
-    a_tl: 'Ibabahagi ang mga detalye ng kuwarto at tuluyan kapag nakumpirma na ang resort. Mangyaring makipag-ugnayan kay Jaris para sa anumang katanungan tungkol sa matutuluyan.',
+    a_tl: 'Ibabahagi ang mga detalye ng kuwarto at tuluyan sa Bani Hidden Paradise Resort kapag malapit na ang petsa. Mangyaring makipag-ugnayan kay Jaris para sa anumang katanungan tungkol sa matutuluyan.',
   },
   {
     q: 'What time should we leave?',
-    a: 'Once the ceremony time is confirmed, we will share travel guidance based on the resort location. We recommend arriving 30 minutes before the ceremony to settle in.',
+    a: 'Once the ceremony time is confirmed, we will share travel guidance to the resort in Bani, Pangasinan. We recommend arriving 30 minutes before the ceremony to settle in.',
     q_tl: 'Anong oras kami dapat umalis?',
-    a_tl: 'Kapag nakumpirma na ang oras ng seremonya, magbibigay kami ng gabay sa biyahe batay sa lokasyon ng resort. Inirerekomenda naming dumating 30 minuto bago ang seremonya upang makaayos.',
+    a_tl: 'Kapag nakumpirma na ang oras ng seremonya, magbibigay kami ng gabay sa biyahe papunta sa resort sa Bani, Pangasinan. Inirerekomenda naming dumating 30 minuto bago ang seremonya upang makaayos.',
   },
   {
     q: 'How late can we RSVP?',
